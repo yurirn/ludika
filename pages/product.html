@@ -8,6 +8,7 @@
       <img src="{{ discount.banner }}" alt="{{discount.name}}"/>  
    {% endif %}
 {% endfor %}
+{% element 'snippets/breadcrumb' { "class": 'breadcrumb'} %}
 <section id="product-container" class="produto-wrapper product-detail" itemscope itemtype="http://schema.org/Product">
     {% element 'snippets/schema-product' {'product': product} %}
     
@@ -15,25 +16,35 @@
     <div class="clearfix">
         
         <div class="col-md-6">
-            {% element 'snippets/breadcrumb' { "class": 'breadcrumb'} %}
+            
             
             {% if product.images %}
-                
-                    <div id="visualBlock" class="product-gallery">
-                        {{ productHelper.gallery() }}
+            <div class="col-lg-2">
+                <div class="product-images-thumbs">
+                    {% for image in product.images %}
+                        <div>
+                            <a href="{{ image.full }}" class="left img-grande thumb-image">
+                                <img src="{{ image.full }}" class="img-fluid">
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="product-images-full">
+                    <div class="images-container">
+                        
+                        <img src="{{ product.images[0].full }}" alt="" id="img-zoom" class="img-fluid">
                     </div>
-                
+                </div>
+            </div>
             {% else %}
                 <div class="product-gallery no-image">
                     <img src="{{ asset('img/no-image.svg') }}" alt="Nenhuma imagem foi cadastrada">
                 </div>
             {% endif %}
             
-			{% if settings.social_position == 0 %}
-				<div class="product-social sidepicture">
-					{{ productHelper.social() }}
-				</div>
-			{% endif %}        
+			
             
         </div> 
         

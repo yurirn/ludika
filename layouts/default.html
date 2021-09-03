@@ -139,7 +139,19 @@
                 t.parentNode.removeChild(t)
             })
         }
+        });
+
+        jQuery('.product-images-thumbs img').hover(function(e){
+            jQuery('.product-images-full .images-container img').attr("src",jQuery(this)[0].currentSrc);
         });      
+        jQuery('.product-images-thumbs').slick({
+        vertical: true,
+        slidesToShow: 5,
+        autoplay:false,
+        arrows: true,
+        prevArrow:"<button type='button' class='slick-prev pull-left'>></button>",
+        nextArrow:"<button type='button' class='slick-next pull-right'><</button>"
+        });
         </script>
 </body>
 </html>
