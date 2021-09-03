@@ -64,7 +64,9 @@
                 {{ productHelper.details() }}
                 {{ productHelper.icons() }}
             </p>
-            {{ productHelper.bonus() }}
+            <div class=minidescriçao>
+                {{ product.description_small }}
+            </div>
             <form id="form_comprar" method="post" data-app="product.buy-form" action="{{ links.cart_add ~ product.id }}">
                 {% if settings.cache_infopreco %}
                 <div data-module="pricing" data-snippet="snippets/pricing" data-product-id="{{ product.id }}">
